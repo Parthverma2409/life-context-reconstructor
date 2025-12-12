@@ -1,4 +1,4 @@
-Life Context Reconstructor — PatchFest Edition
+<img width="831" height="707" alt="image" src="https://github.com/user-attachments/assets/8994cfe5-4ffa-4b6a-ac84-fb7ef4a5a44e" />Life Context Reconstructor — PatchFest Edition
 
 A multimodal AI system for reconstructing a coherent narrative, timeline, and social context from fragmented digital artifacts.
 
@@ -72,9 +72,62 @@ Before reconstruction begins, the application requests necessary permissions:
 Stage 1: Data Extraction
 
 Processes raw files into structured metadata using OCR, vision tagging, audio transcription, and text extraction.
+<img width="831" height="707" alt="image" src="https://github.com/user-attachments/assets/9513477f-fe73-40af-9977-c00f943b57c9" />
+
+<img width="850" height="881" alt="image" src="https://github.com/user-attachments/assets/416817e9-fc0d-47f8-8c2d-21a76c05c7c8" />
+
 <img src="https://github.com/user-attachments/assets/795da57c-8d59-4c69-a2a6-3116ce291ee9" width="100%" />
 
 Stage 2: Timeline Reconstruction
+// baseline/generateTimeline.ts
+// ---------------------------------------------
+// Minimal Stage-2 Timeline Reconstruction Stub
+// Students must expand this into a full system.
+// ---------------------------------------------
+
+export const generateTimeline = async (assets: any[]) => {
+  // STEP 1: Reduce asset size (optional starter)
+  const lightweight = assets.map(a => ({
+    id: a.id,
+    filename: a.filename,
+    timestamps: a.timestamps,
+    text_preview: a.text?.full?.substring(0, 120) || "",
+    faces: a.faces || [],
+    tags: a.derived_tags || []
+  }));
+
+  // TODO: Replace this with your Gemini API logic
+  // This is only a placeholder pipeline description.
+  const prompt = `
+    You are Stage 2: Timeline Reconstruction.
+
+    Input: A list of 'Asset' objects from Stage 1.
+
+    Your tasks:
+    1. Group related assets into 'events'.
+    2. Infer dates when missing or conflicting.
+    3. Produce a chronological structure of:
+       - days
+       - weeks
+       - months
+       - phases
+    4. Return STRICT JSON only.
+
+    Input asset metadata:
+    ${JSON.stringify(lightweight)}
+  `;
+
+  // TODO: Plug in your actual AI call here.
+  // Example placeholder (students will implement):
+  const fakeOutput = {
+    days: [],
+    weeks: [],
+    months: [],
+    phases: []
+  };
+
+  return fakeOutput;
+};
 
 Rebuilds chronological flow using timestamps, semantic clues, and inferred temporal context.
 <img src="https://github.com/user-attachments/assets/a67c5b50-559f-444e-9a73-7a02dda79d2f" width="100%" />
@@ -177,79 +230,15 @@ Frontend rendering of the reconstructed timeline and narrative.
 
 You may freely add new folders such as `utils/`, `services/`, or `hooks/` depending on your architectural needs.
 
+
 ## Using the Gemini API (Required for All AI Tasks)
 
 All multimodal analysis in this project uses the Gemini API.
-
-Below is the minimal example for calling Gemini Pro Vision from a Next.js route.
-
-ts
-import { GoogleGenerativeAI } from "@google/generative-ai";
-
-export async function analyzeImage(base64Image: string) {
-  const genAI = new GoogleGenerativeAI(process.env.AIS_API_KEY || "");
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
-  const result = await model.generateContent([
-    {
-      inlineData: {
-        data: base64Image,
-        mimeType: "image/png",
-      },
-    },
-    "Describe the image with OCR, objects, faces, and scene context."
-  ]);
-
-  return result.response.text();
-}
 
 Add environment variables:
 
 AIS_API_KEY=your_key_here
 
-## Expected Output Structure (JSON Contract)
-
-All extraction modules should produce JSON in the following format:
-
-json
-{
-  "fileId": "abc123",
-  "type": "image | audio | video | document",
-  "timestamp": "2023-08-14T19:22:00Z",
-  "extracted": {
-    "text": "...",
-    "objects": ["person", "bag", "car"],
-    "faces": [
-      { "faceId": "P1", "confidence": 0.92 }
-    ],
-    "scene": "coffee shop",
-    "sentiment": 0.64
-  }
-}
-Timeline Reconstruction expects:
-json
-Copy code
-{
-  "events": [
-    {
-      "eventId": "E1",
-      "start": "2023-05-02T09:00:00Z",
-      "end": "2023-05-02T11:00:00Z",
-      "description": "Morning coffee + meeting prep",
-      "people": ["P1", "P2"],
-      "mood": 0.3
-    }
-  ]
-}
-Yearbook Generation expects:
-json
-Copy code
-{
-  "narrative": "...",
-  "highlights": [...],
-  "monthly": [...],
-  "topPeople": [...]
-}
 
 <img src="https://github.com/user-attachments/assets/2d3aa59c-e410-4ae8-aa1f-e42b83aeb0c7" width="30%" />
 
