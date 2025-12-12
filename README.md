@@ -4,27 +4,19 @@ A multimodal AI system for reconstructing a coherent narrative, timeline, and so
 
 Badges
 <p> <img src="https://img.shields.io/badge/Next.js-14-black" /> <img src="https://img.shields.io/badge/TypeScript-5-blue" /> <img src="https://img.shields.io/badge/TailwindCSS-3-0EA5E9" /> <img src="https://img.shields.io/badge/Gemini%20API-Pro-lightgrey" /> <img src="https://img.shields.io/badge/PatchFest-2025-purple" /> <img src="https://img.shields.io/badge/License-MIT-green" /> </p>
-Table of Contents
+## Table of Contents
 
-Overview
+1. [Overview](#1-overview)  
+2. [Problem Statement](#2-problem-statement-life-context-reconstruction-challenge)  
+3. [Core Capabilities](#3-core-capabilities)  
+4. [The Five-Stage Reconstruction Pipeline](#4-the-five-stage-reconstruction-pipeline)  
+5. [System Features](#5-system-features)  
+6. [Technical Infrastructure](#6-technical-infrastructure)  
+7. [Installation](#7-installation)  
+8. [Contribution Guidelines](#8-contribution-guidelines)  
+9. [Evaluation Criteria](#9-evaluation-criteria)  
+10. [Impact](#10-impact)
 
-Problem Statement
-
-Core Capabilities
-
-The Five-Stage Reconstruction Pipeline
-
-System Features
-
-Technical Infrastructure
-
-Installation
-
-Contribution Guidelines
-
-Evaluation Criteria
-
-Impact
 
 1. Overview
 
