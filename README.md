@@ -1,279 +1,200 @@
-🧩 1. FINAL ULTRA-CLEAN, INCREDIBLY PROFESSIONAL README.md
+Life Context Reconstructor — PatchFest Edition
 
-This README will make ANY judge instantly approve your technical contribution.
+A multimodal AI system for reconstructing a coherent narrative, timeline, and social context from fragmented digital artifacts.
 
-🛠 2. FINAL ISSUE LIST (35 issues total)
+Overview
 
-• 10 Easy
-• 15 Medium
-• 9 Hard
-• 1 Bonus Ultra-Hard Vision Task
+The Life Context Reconstructor is an advanced multimodal analysis engine designed to process unstructured personal data—images, videos, documents, audio recordings, and zip archives—and rebuild a meaningful representation of a user’s year. It performs temporal reasoning, semantic clustering, mood analysis, and narrative generation to convert fragmented digital information into a structured story.
 
-This matches the real architecture you described.
+This repository contains the official starter code for the PatchFest challenge. Participants will extend the system by completing assigned GitHub issues across different complexity levels, implementing features within the reconstruction pipeline, visualization interfaces, and creative AI tools.
 
-I will now generate both the README and all issues ready to paste into GitHub.
 
-✅ FINAL README.md (Copy-Paste Ready)
-Life Context Reconstructor — PatchFest 2025 Edition
-A Multi-Modal AI System that Rebuilds a Person’s Year from Raw Files
 
-This project is the official PatchFest technical track challenge.
-Participants will build components of an advanced multimodal AI engine that reconstructs memories, events, moods, people, and narrative context from raw uploaded data.
 
-Your task:
-Implement parts of the 5-Stage Reconstruction Pipeline + Dashboard + Tools based on assigned GitHub issues.
+Problem Statement: Life Context Reconstruction Challenge
 
-This starter repo includes minimal working code for:
+Modern digital life is fragmented. Individuals generate thousands of photos, screenshots, notes, receipts, and videos across multiple devices and apps, but rarely have the ability to understand them as a connected story. As a result, we experience a form of digital amnesia: a year’s worth of memories becomes a disorganized archive rather than a meaningful narrative.
 
-File upload
+The Life Context Reconstructor addresses this challenge by transforming a user’s scattered digital artifacts into a cohesive, interpretable representation of their lived experience. Leveraging multimodal AI models with long-context reasoning, the system ingests mixed-media data—images, documents, audio, video, and metadata—and performs temporal, semantic, and relational reconstruction.
 
-Basic Next.js pages
+Unlike traditional galleries that sort by timestamp, the reconstruction engine performs cross-file reasoning. It can infer, for example, that a ride-share receipt, a concert video, and a calendar invite correspond to the same event. Through multimodal triangulation, it builds:
 
-Dummy API routes
+A narrative yearbook summarizing the user’s experiences.
 
-Initial parsing utilities
+A semantic timeline of reconstructed events.
 
-Sample dataset
+Emotional analytics derived from text, speech, and visual sentiment signals.
 
-Environment variable templates
+A social graph of recurring individuals and their inferred roles.
 
-Everything else will be built by contributors.
+The system operates through a multi-stage pipeline: preprocessing, multimodal extraction, timeline reasoning, sentiment and behavior modeling, relationship clustering, and narrative generation. The backend processes raw files and sends optimized batches to the AI model, which returns structured JSON for analysis and Markdown for long-form narrative rendering. The frontend visualizes the outputs through interactive dashboards, charts, and narrative interfaces.
 
-📂 Supported Input Data Types
+The objective of this challenge is to build key components of this reconstruction engine. Participants will implement modules, data parsers, AI integrations, analysis utilities, and UI views that contribute to generating a coherent, intelligible representation of a user’s year.
 
-The system must ingest individual files OR ZIP archives containing:
+This project pushes beyond content generation toward context understanding, demonstrating AI’s potential to help users reclaim meaning from their digital history.
+
+
+
+Core Capabilities
+Supported Input Types
+
+The system accepts individual files and bulk archives containing:
 
 Images
 
-Types: .jpg, .jpeg, .png, .webp
-Analysis Required:
-
-OCR (text extraction)
-
-Face detection & clustering
-
-Scene classification
-
-Object detection
-
-EXIF timestamp extraction
+Formats: jpg, jpeg, png, webp
+Extracted Features:
+• Optical character recognition
+• Object and scene detection
+• Face clustering and embedding
+• EXIF metadata including timestamps and geodata
 
 Documents
 
-Types: .pdf, .txt, .md, .json
-Analysis Required:
-
-Full text extraction
-
-Entity recognition (dates, names, topics)
-
-Semantic topic modeling
+Formats: pdf, txt, md, json
+Extracted Features:
+• Full text extraction
+• Named entity recognition for dates, locations, and individuals
+• Topic modeling and semantic analysis
 
 Audio
 
-Types: .mp3, .wav
-Analysis Required:
-
-Speech-to-text
-
-Speaker diarization
-
-Ambient sound classification
+Formats: mp3, wav
+Extracted Features:
+• Speech-to-text transcription
+• Speaker diarization
+• Ambient sound classification
 
 Video
 
-Types: .mp4, .mov
-Analysis Required:
+Formats: mp4, mov
+Extracted Features:
+• Keyframe extraction
+• Visual scene summarization
+• Temporal cue detection
 
-Keyframe extraction
+ZIP Archives
 
-Visual frame descriptions
+The client performs automatic extraction and filters supported formats before processing.
 
-Scene transitions
+The Five-Stage Reconstruction Pipeline
 
-Archives
+The webapp should ask for the permissions first:
+<img width="2559" height="1359" alt="Screenshot 2025-12-12 192532" src="https://github.com/user-attachments/assets/6a514cfe-6d0e-4e6a-b9e5-ef8dce5dae7c" />
 
-Types: .zip
-The client auto-extracts supported data types using a browser-side unzip engine.
+Stage 1: Data Extraction
 
-🚀 THE 5-STAGE RECONSTRUCTION PIPELINE
-Stage 1 — Data Extraction
+Processes raw files into structured multimodal metadata using vision, OCR, transcription, and text extraction models.
 
-Convert raw files into structured metadata and text using Gemini Models:
+<img width="2559" height="1358" alt="Screenshot 2025-12-12 192546" src="https://github.com/user-attachments/assets/795da57c-8d59-4c69-a2a6-3116ce291ee9" />
 
-OCR (gemini-3-flash)
+Stage 2: Timeline Reconstruction
 
-Transcription (gemini-2.5-tts or speech model)
+Orders events chronologically by merging timestamps, inferred temporal cues, and cross-file semantic alignment.
 
-Vision tagging (gemini-3-pro-vision)
+<img width="2559" height="1361" alt="Screenshot 2025-12-12 192619" src="https://github.com/user-attachments/assets/a67c5b50-559f-444e-9a73-7a02dda79d2f" />
 
-EXIF extraction
+Stage 3: People and Relationship Profiling
+<img width="2559" height="1358" alt="Screenshot 2025-12-12 192633" src="https://github.com/user-attachments/assets/55e609de-b0ad-4f06-9383-208ed825d9ac" />
 
-Stage 2 — Timeline Reconstruction
 
-Rebuild chronological order using:
+Identifies recurring individuals through face embeddings and text mentions, generating role hypotheses and confidence scores.
+<img width="2559" height="1353" alt="Screenshot 2025-12-12 192650" src="https://github.com/user-attachments/assets/4f6c1de9-89bd-4df3-9566-0daff832e4e3" />
 
-Timestamps
 
-Visual time inference
+Stage 4: Behavior and Mood Analysis
 
-Text-based date extraction
+Builds the emotional arc of the year, detects life patterns, and identifies behavioral shifts and high-impact transitions.
+<img width="2559" height="1355" alt="Screenshot 2025-12-12 192715" src="https://github.com/user-attachments/assets/1d2f548c-0506-4318-9f55-c7ec2c889fb0" />
 
-Conflict resolution logic
 
-Stage 3 — People & Relationships
+Stage 5: Yearbook Generation
 
-Using face embeddings + text entities:
+Produces a narrative yearbook, top moments, monthly summaries, and contextual insights through generative language modeling.
 
-Identify recurring persons (“Person A”, “Person B”)
+<img width="2559" height="1381" alt="Screenshot 2025-12-12 192735" src="https://github.com/user-attachments/assets/8827e9ab-90ff-44c2-a1de-774724c1bf23" />
 
-Estimate relationship roles
 
-Produce confidence scores
+System Features
+Dashboard
 
-Stage 4 — Behavior & Mood Analysis
+Displays statistics, activity peaks, events, and key connections.
 
-Plot emotional flow and detect life patterns:
+People and Roles
 
-Mood score per day/week
+Shows identified individuals, relationship strength, recurring appearances, and shared moments.
 
-Sentiment clusters
+Insights and Mood
 
-Behavioral insights (“Night Owl”, “Traveller”)
+Presents the emotional timeline, behavioral patterns, deep insights, and transitions across the year.
 
-Stage 5 — Yearbook Generation
+Yearbook Story
 
-Produce:
+Generates a long-form narrative representation of the user’s reconstructed year.
 
-Cinematic narrative of the year
+Creative Tools
 
-Key moments
+Includes an AI assistant for contextual queries, a generative media studio for creating visual and audio assets, and a maps-grounding tool for interpreting geographic references.
 
-Monthly summaries
+Technical Infrastructure
 
-Top relationships
+• Smart batching to avoid rate limits
+• Retry mechanisms with exponential backoff
+• Modular extraction utilities
+• Scalable analysis pipeline
+• Client-side ZIP processing
+• Integration-ready AI endpoints
 
-Turning points
+Installation
 
-📊 Interactive Dashboard Features
-Dashboard Home
+Clone the repository:
 
-Total files analyzed
+git clone <repository-url>
+cd ai-year-wrap
 
-Mood arc
 
-Activity peaks
-
-Major transitions
-
-People Explorer
-
-Recognized individuals
-
-Relationship strength
-
-Key appearances
-
-Insights & Charts
-
-Mood timeline
-
-Life transitions
-
-Topic breakdown
-
-Yearbook
-
-AI-generated digital memoir with chapters
-
-🎨 Creative Tools
-AI Chat Assistant
-
-Ask: “What was my busiest month?”
-Uses Gemini 3.0 Pro with “Thinking Mode”.
-
-Generative Media Studio
-
-Image generation: gemini-3-pro-image-preview
-
-Video generation: Google Veo 3.1
-
-TTS Audio generation: gemini-2.5-flash-preview-tts
-
-Maps Grounding Tool
-
-Search real locations referenced in your files.
-
-🛡 Technical Guarantees
-
-Batch processing (3 files per batch)
-
-Auto-retry with exponential backoff
-
-Client-side zip extraction
-
-Modular pipeline
-
-🔑 API Setup
-
-Students must generate an API key:
-
-1. Visit https://ai.google.dev/
-2. Log in and create a new API key
-3. Add it to a new `.env` file:
-AIS_API_KEY=your_key_here
-
-
-Database Option (Recommended): Supabase
-Setup instructions are provided in Issue #DB-01.
-
-🧪 Final Evaluation
-
-Your implementation will be checked using:
-
-A reference reconstructed timeline
-
-Expected outputs
-
-Matching logic (0–100 score)
-
-This is included in the Final Evaluation Issue.
-
-🏁 Start Here
-
-Run locally:
+Install dependencies:
 
 npm install
+
+
+Configure environment variables:
+
+AIS_API_KEY=your_key_here
+<img width="520" height="927" alt="image" src="https://github.com/user-attachments/assets/2d3aa59c-e410-4ae8-aa1f-e42b83aeb0c7" />
+
+Contribution Guidelines
+
+This repository is part of PatchFest. Issues are categorized into easy, medium, and hard. Participants must:
+
+Choose an issue
+
+Comment to claim it
+
+Create a feature branch
+
+Implement the solution
+
+Submit a pull request
+
+Contributions will be evaluated based on correctness, architecture quality, clarity, and adherence to requirements.
+
+Evaluation Criteria
+
+Final outputs will be compared against reference reconstructions. The evaluation includes:
+
+• Accuracy of extracted metadata
+• Correctness of reconstructed timeline
+• Quality of emotional arc and insights
+• Reliability of relationship clustering
+• Coherence of the generated yearbook narrative
+• UI clarity and functional integration
+
+Impact
+
+This project demonstrates a future direction for AI: not generating synthetic content, but deriving meaning from existing personal data. By turning disorganized digital artifacts into structured memory, the Life Context Reconstructor helps users understand their lived experiences, identify emotional patterns, and reclaim the narrative of their year.
+
+
+Start the development server:
+
 npm run dev
-
-🧩 CONTRIBUTING
-
-Issues are labeled Easy / Medium / Hard / Bonus.
-Pick any issue → create a branch → submit PR.
-Your implementation may require additional folders like /utils, /hooks, /types, or /services — feel free to add them as your architecture grows. The provided structure is only the starting point.
-Lastly feel free to add and change the files based on your needs but just in case you loose track the basic file structure  is as follows:
-
-ai-year-wrap/
-├── app/
-│   ├── page.tsx
-│   ├── upload/page.tsx
-│   ├── wrap/page.tsx
-│   ├── api/analyze/route.ts
-│   ├── api/generate-summary/route.ts
-├── components/
-│   ├── UploadBox.tsx
-│   ├── Slide.tsx
-│   ├── Loading.tsx
-│   └── Button.tsx
-├── lib/
-│   ├── extractStats.ts
-│   ├── summarize.ts
-│   └── storyline.ts (template)
-├── data/sample.json
-├── .env.example
-├── README.md
-├── package.json
-├── tailwind.config.js
-├── postcss.config.js
-└── .github/
-    └── ISSUE_TEMPLATE/…
