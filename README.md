@@ -83,8 +83,7 @@ Stage 2: Timeline Reconstruction
 // baseline/generateTimeline.ts
 // ---------------------------------------------
 // Minimal Stage-2 Timeline Reconstruction Stub
-// Students must expand this into a full system.
-// ---------------------------------------------
+
 
 export const generateTimeline = async (assets: any[]) => {
   // STEP 1: Reduce asset size (optional starter)
