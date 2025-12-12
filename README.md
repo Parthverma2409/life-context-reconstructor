@@ -1,4 +1,4 @@
-<img width="831" height="707" alt="image" src="https://github.com/user-attachments/assets/8994cfe5-4ffa-4b6a-ac84-fb7ef4a5a44e" />Life Context Reconstructor — PatchFest Edition
+Life Context Reconstructor — PatchFest Edition
 
 A multimodal AI system for reconstructing a coherent narrative, timeline, and social context from fragmented digital artifacts.
 
@@ -72,6 +72,7 @@ Before reconstruction begins, the application requests necessary permissions:
 Stage 1: Data Extraction
 
 Processes raw files into structured metadata using OCR, vision tagging, audio transcription, and text extraction.
+<img width="831" height="707" alt="image" src="https://github.com/user-attachments/assets/8994cfe5-4ffa-4b6a-ac84-fb7ef4a5a44e" />
 <img width="831" height="707" alt="image" src="https://github.com/user-attachments/assets/9513477f-fe73-40af-9977-c00f943b57c9" />
 
 <img width="850" height="881" alt="image" src="https://github.com/user-attachments/assets/416817e9-fc0d-47f8-8c2d-21a76c05c7c8" />
