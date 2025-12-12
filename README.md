@@ -148,10 +148,108 @@ Install dependencies:
 
 npm install
 
+## Starter Code Overview
+
+This repository already contains a minimal working scaffold so contributors can focus on building features rather than setting up the environment.
+
+Key entry points you will be working on:
+
+### 1. `app/api/analyze/route.ts`
+Server-side route for uploading files and performing extraction.  
+You will extend this with:
+- OCR calls  
+- Scene/object detection  
+- Transcription  
+- Keyframe extraction  
+- Batch processing logic  
+
+### 2. `lib/extractStats.ts`
+Utility for normalizing model outputs into a consistent format.
+
+### 3. `lib/summarize.ts`
+Utility for generating summarized text and insights.
+
+### 4. `lib/storyline.ts`
+Template used for generating the Yearbook narrative.
+
+### 5. `app/wrap/page.tsx`
+Frontend rendering of the reconstructed timeline and narrative.
+
+You may freely add new folders such as `utils/`, `services/`, or `hooks/` depending on your architectural needs.
+
+## Using the Gemini API (Required for All AI Tasks)
+
+All multimodal analysis in this project uses the Gemini API.
+
+Below is the minimal example for calling Gemini Pro Vision from a Next.js route.
+
+ts
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
+export async function analyzeImage(base64Image: string) {
+  const genAI = new GoogleGenerativeAI(process.env.AIS_API_KEY || "");
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+  const result = await model.generateContent([
+    {
+      inlineData: {
+        data: base64Image,
+        mimeType: "image/png",
+      },
+    },
+    "Describe the image with OCR, objects, faces, and scene context."
+  ]);
+
+  return result.response.text();
+}
 
 Add environment variables:
 
 AIS_API_KEY=your_key_here
+
+## Expected Output Structure (JSON Contract)
+
+All extraction modules should produce JSON in the following format:
+
+json
+{
+  "fileId": "abc123",
+  "type": "image | audio | video | document",
+  "timestamp": "2023-08-14T19:22:00Z",
+  "extracted": {
+    "text": "...",
+    "objects": ["person", "bag", "car"],
+    "faces": [
+      { "faceId": "P1", "confidence": 0.92 }
+    ],
+    "scene": "coffee shop",
+    "sentiment": 0.64
+  }
+}
+Timeline Reconstruction expects:
+json
+Copy code
+{
+  "events": [
+    {
+      "eventId": "E1",
+      "start": "2023-05-02T09:00:00Z",
+      "end": "2023-05-02T11:00:00Z",
+      "description": "Morning coffee + meeting prep",
+      "people": ["P1", "P2"],
+      "mood": 0.3
+    }
+  ]
+}
+Yearbook Generation expects:
+json
+Copy code
+{
+  "narrative": "...",
+  "highlights": [...],
+  "monthly": [...],
+  "topPeople": [...]
+}
 
 <img src="https://github.com/user-attachments/assets/2d3aa59c-e410-4ae8-aa1f-e42b83aeb0c7" width="30%" />
 
