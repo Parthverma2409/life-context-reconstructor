@@ -72,7 +72,7 @@ Before reconstruction begins, the application requests necessary permissions:
 Stage 1: Data Extraction
 
 Processes raw files into structured metadata using OCR, vision tagging, audio transcription, and text extraction.
-<img width="831" height="707" alt="image" src="https://github.com/user-attachments/assets/8994cfe5-4ffa-4b6a-ac84-fb7ef4a5a44e" />
+
 <img width="831" height="707" alt="image" src="https://github.com/user-attachments/assets/9513477f-fe73-40af-9977-c00f943b57c9" />
 
 <img width="850" height="881" alt="image" src="https://github.com/user-attachments/assets/416817e9-fc0d-47f8-8c2d-21a76c05c7c8" />
@@ -299,3 +299,7 @@ UI quality and integration
 This project shows how AI can reconstruct meaning from the data people already generate. Instead of creating artificial content, the system uncovers structure, relationships, and emotion hidden in digital archives.
 
 It is a step toward AI tools that help users understand their own lives, not just produce new media.
+
+
+Lastly some of the code references has been provided for you to not feel lost, but dont let them hold your creativity back and let your imagination run wild.
+ALL THE BEST!!!!
