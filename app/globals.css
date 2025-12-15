@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom styles */
-body {
-  background-color: #0f172a;
-  color: white;
+html {
+  background-color: white;
+}
+
+html.dark {
+  background-color: black;
 }

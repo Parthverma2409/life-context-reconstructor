@@ -1,20 +1,37 @@
 'use client';
+
 import { useState } from 'react';
 import UploadBox from '@/components/UploadBox';
+import ThemeToggle from '@/components/ThemeToggle';
 
 export default function UploadPage() {
   const [files, setFiles] = useState<File[] | null>(null);
+
   async function onFilesSelected(list: FileList | null) {
     if (!list) return setFiles(null);
     setFiles(Array.from(list));
   }
+
   return (
     <div className="max-w-4xl mx-auto p-8">
+      {/* Header */}
+      <header className="flex items-center justify-between mb-6 border-b border-gray-200 dark:border-zinc-800 pb-3">
+        <h1 className="font-semibold">My App</h1>
+        <ThemeToggle />
+      </header>
+
+      {/* Page content */}
       <h2 className="text-2xl font-bold mb-4">Upload Archives</h2>
+
       <UploadBox onFilesSelected={onFilesSelected} />
+
       <div className="mt-6">
-        <p className="text-sm text-slate-400">Files selected: {files?.length ?? 0}</p>
-        <p className="mt-4 text-slate-500">After uploading, call the Analyze API to run the pipeline.</p>
+        <p className="text-sm text-slate-400">
+          Files selected: {files?.length ?? 0}
+        </p>
+        <p className="mt-4 text-slate-500">
+          After uploading, call the Analyze API to run the pipeline.
+        </p>
       </div>
     </div>
   );
